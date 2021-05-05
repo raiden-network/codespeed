@@ -11,7 +11,7 @@ from django.core.exceptions import ValidationError, ObjectDoesNotExist
 from django.http import HttpResponse, Http404, HttpResponseBadRequest, \
     HttpResponseNotFound, StreamingHttpResponse
 from django.db.models import F
-from django.shortcuts import get_object_or_404, render_to_response
+from django.shortcuts import get_object_or_404, render
 from django.views.decorators.http import require_GET, require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
@@ -29,6 +29,10 @@ from .validators import validate_results_request
 from .images import gen_image_from_results
 
 logger = logging.getLogger(__name__)
+
+
+def render_to_response(*args):
+    return render(None, *args)
 
 
 def no_environment_error(request):

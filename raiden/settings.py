@@ -81,6 +81,7 @@ STATICFILES_DIRS = (
     os.path.join(BASEDIR, 'static'),
 )
 
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # Codespeed settings that can be overwritten here.
 from codespeed.settings import *

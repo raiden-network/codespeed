@@ -2,13 +2,15 @@
 # Django settings for a Codespeed project.
 import os
 
-DEBUG = True
+DEBUG = False
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 TOPDIR = os.path.split(BASEDIR)[1]
 
 #: The directory which should contain checked out source repositories:
 REPOSITORY_BASE_PATH = os.path.join(BASEDIR, "repos")
+
+ALLOWED_HOSTS = ['speed.metrics.brainbot.com']
 
 ADMINS = (
     # ('Your Name', 'your_email@domain.com'),
@@ -72,6 +74,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.staticfiles',
     'codespeed',
+    'gunicorn',
 )
 
 
@@ -81,6 +84,7 @@ STATICFILES_DIRS = (
     os.path.join(BASEDIR, 'static'),
 )
 
+SECRET_KEY = os.environ['DJANGO_SECRET_KEY']
 
 # Codespeed settings that can be overwritten here.
 from codespeed.settings import *
